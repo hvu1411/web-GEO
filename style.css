@@ -1,0 +1,336 @@
+/* =========================================================
+   GEO Guide — Thiết bị công nhân
+   Design system: "bảng thông số / thẻ bảo trì công nghiệp"
+   Steel blue + hi-vis safety orange, condensed display type
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+	--ink:#16222c;
+	--steel:#254a68;
+	--steel-deep:#152f45;
+	--steel-light:#5a86a8;
+	--safety:#ff7a1a;
+	--safety-deep:#d8590a;
+	--bg:#eef1ee;
+	--surface:#ffffff;
+	--line:#dde3e0;
+	--text:#1c2b33;
+	--muted:#5b6b70;
+	--good:#1f7a4d;
+	--good-bg:#e9f5ee;
+	--bad:#b8431f;
+	--bad-bg:#fbece4;
+	--radius:10px;
+	--radius-lg:16px;
+	--font-display:"Barlow Condensed", "Arial Narrow", sans-serif;
+	--font-body:"Inter", "Segoe UI", Roboto, Arial, sans-serif;
+	--shadow: 0 1px 2px rgba(21,47,69,0.06), 0 8px 20px rgba(21,47,69,0.06);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+	margin:0;
+	font-family:var(--font-body);
+	background:var(--bg);
+	background-image:
+		linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%),
+		repeating-linear-gradient(135deg, rgba(21,47,69,0.025) 0 2px, transparent 2px 26px);
+	color:var(--text);
+	line-height:1.62;
+}
+:focus-visible{outline:3px solid var(--safety);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+
+.wrap{max-width:1000px;margin:0 auto;padding:16px}
+img{max-width:100%}
+
+/* ---------- Header ---------- */
+.site-header{
+	background:var(--steel-deep);
+	border-bottom:4px solid var(--safety);
+	padding:14px 0;
+	position:sticky;top:0;z-index:40;
+}
+.site-header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{
+	font-family:var(--font-display);
+	font-weight:800;
+	font-size:1.5rem;
+	letter-spacing:.2px;
+	color:#fff;
+	text-decoration:none;
+	display:inline-flex;
+	align-items:center;
+	gap:10px;
+}
+.brand::before{
+	content:"";
+	width:14px;height:14px;
+	background:var(--safety);
+	clip-path:polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+	flex:none;
+}
+.brand b{color:var(--safety);font-weight:800}
+.header-note{
+	float:none;margin:0 0 0 auto;
+	color:#c9d6de;
+	font-size:.9rem;
+	font-weight:500;
+	background:rgba(255,255,255,0.06);
+	border:1px solid rgba(255,255,255,0.12);
+	padding:5px 12px;
+	border-radius:999px;
+}
+
+/* ---------- Hero ---------- */
+main.wrap{padding-top:8px}
+h1{
+	font-family:var(--font-display);
+	font-weight:800;
+	font-size:clamp(1.9rem,4.6vw,2.9rem);
+	line-height:1.08;
+	margin:26px 0 14px;
+	color:var(--steel-deep);
+	max-width:18ch;
+}
+.lead{
+	color:var(--muted);
+	max-width:66ch;
+	font-size:1.08rem;
+	padding-left:16px;
+	border-left:4px solid var(--safety);
+}
+
+/* ---------- Sections ---------- */
+.sec{margin-top:44px}
+h2{
+	font-family:var(--font-display);
+	font-weight:700;
+	font-size:clamp(1.35rem,2.6vw,1.65rem);
+	color:var(--steel-deep);
+	margin:0 0 16px;
+	padding-bottom:10px;
+	border-bottom:2px solid var(--line);
+	display:flex;
+	align-items:baseline;
+	gap:10px;
+}
+.sec > p{max-width:72ch}
+
+/* keyword chips */
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:12px 0 18px}
+.meta-row li{
+	background:var(--surface);
+	padding:7px 14px 7px 12px;
+	border-radius:999px;
+	border:1px solid var(--line);
+	color:var(--steel-deep);
+	font-weight:600;
+	font-size:.92rem;
+	display:flex;align-items:center;gap:7px;
+}
+.meta-row li::before{
+	content:"";
+	width:7px;height:7px;border-radius:50%;
+	background:var(--safety);
+	flex:none;
+}
+
+.sec > ol{max-width:72ch;padding-left:22px}
+.sec > ol li{margin-bottom:6px}
+.sec > ol li::marker{color:var(--safety-deep);font-weight:700}
+
+/* ---------- Comparison table (spec sheet) ---------- */
+.table-wrap{
+	overflow-x:auto;
+	background:var(--surface);
+	border:1px solid var(--line);
+	border-radius:var(--radius-lg);
+	box-shadow:var(--shadow);
+}
+table{width:100%;border-collapse:collapse;min-width:640px}
+caption{
+	text-align:left;
+	font-size:.85rem;
+	color:var(--muted);
+	padding:12px 14px 0;
+	font-weight:500;
+}
+thead th{
+	background:var(--steel-deep);
+	color:#fff;
+	padding:12px 14px;
+	text-align:left;
+	font-family:var(--font-display);
+	font-weight:700;
+	font-size:1.02rem;
+	letter-spacing:.2px;
+	white-space:nowrap;
+}
+thead th:first-child{border-radius:0}
+td,th{padding:13px 14px;border-top:1px solid var(--line)}
+tbody th{font-weight:700;color:var(--steel-deep)}
+tbody tr:nth-child(even){background:#f6f8f7}
+tbody tr:hover{background:#fff2e8}
+.hint{color:var(--muted);font-size:.9rem;margin-top:10px}
+
+/* ---------- Reviews (maintenance-tag cards) ---------- */
+.review{
+	background:var(--surface);
+	border:1px solid var(--line);
+	border-radius:var(--radius-lg);
+	margin-bottom:20px;
+	box-shadow:var(--shadow);
+	overflow:hidden;
+}
+.review > header{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	gap:12px;
+	flex-wrap:wrap;
+	background:var(--steel);
+	padding:16px 20px;
+	border-bottom:3px solid var(--safety);
+}
+.review h3{
+	font-family:var(--font-display);
+	color:#fff;
+	font-size:1.3rem;
+	font-weight:700;
+	margin:0;
+}
+.review .price{
+	margin:0;
+	font-weight:700;
+	color:var(--steel-deep);
+	background:#fff;
+	padding:5px 12px;
+	border-radius:999px;
+	font-size:.92rem;
+	flex:none;
+}
+.rv-body{padding:20px}
+.specs{
+	display:grid;
+	grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+	gap:10px;
+	margin:0 0 16px;
+}
+.specs > div{
+	background:var(--bg);
+	border:1px solid var(--line);
+	border-radius:8px;
+	padding:9px 12px;
+}
+.specs dt{font-size:.76rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.specs dd{margin:2px 0 0;font-weight:700;color:var(--steel-deep);font-size:.98rem}
+
+.rv-text > p{max-width:74ch;margin-top:0}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.pros,.cons{border-radius:10px;padding:12px 14px}
+.pros{background:var(--good-bg);border:1px solid #cfe8da}
+.cons{background:var(--bad-bg);border:1px solid #f2d5c4}
+.pros h4,.cons h4{margin:0 0 6px;font-family:var(--font-display);font-size:1rem;font-weight:700}
+.pros h4{color:var(--good)}
+.cons h4{color:var(--bad)}
+.pros ul,.cons ul{margin:0;padding-left:18px;font-size:.94rem}
+.pros li{color:#1c3d2c}
+.cons li{color:#3d2618}
+
+.verdict-bar{
+	margin:14px 0 0;
+	padding:12px 14px;
+	background:var(--bg);
+	border-left:4px solid var(--steel-deep);
+	border-radius:0 8px 8px 0;
+	font-size:.96rem;
+}
+.verdict-bar strong{color:var(--steel-deep)}
+
+/* ---------- FAQ ---------- */
+.faq-grid{display:grid;gap:10px}
+.qa{
+	background:var(--surface);
+	border:1px solid var(--line);
+	border-radius:var(--radius);
+	padding:4px 4px;
+}
+.qa summary{
+	list-style:none;
+	cursor:pointer;
+	padding:14px 44px 14px 16px;
+	font-weight:700;
+	color:var(--steel-deep);
+	position:relative;
+	font-size:1.02rem;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{
+	content:"+";
+	position:absolute;
+	right:14px;top:50%;transform:translateY(-50%);
+	width:26px;height:26px;
+	border-radius:50%;
+	background:var(--bg);
+	color:var(--steel-deep);
+	display:flex;align-items:center;justify-content:center;
+	font-size:1.2rem;
+	font-weight:700;
+	border:1px solid var(--line);
+}
+.qa[open] summary::after{content:"–";background:var(--safety);color:#fff;border-color:var(--safety)}
+.qa p{margin:0;padding:0 16px 16px;color:var(--muted);max-width:74ch}
+
+/* ---------- Checklist ---------- */
+.checklist{list-style:none;padding:0;margin:8px 0;display:grid;gap:10px;counter-reset:step}
+.checklist li{
+	counter-increment:step;
+	background:var(--surface);
+	padding:14px 16px 14px 54px;
+	border-radius:var(--radius);
+	border:1px solid var(--line);
+	position:relative;
+}
+.checklist li::before{
+	content:counter(step);
+	position:absolute;left:14px;top:50%;transform:translateY(-50%);
+	width:26px;height:26px;
+	background:var(--steel-deep);
+	color:#fff;
+	border-radius:6px;
+	display:flex;align-items:center;justify-content:center;
+	font-family:var(--font-display);
+	font-weight:700;
+	font-size:.95rem;
+}
+.checklist li strong{color:var(--steel-deep)}
+
+/* ---------- Nguồn tham khảo ---------- */
+#nguon-tham-khao ol{max-width:72ch;padding-left:22px}
+#nguon-tham-khao li{margin-bottom:8px}
+#nguon-tham-khao a{color:var(--steel);font-weight:600;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+#nguon-tham-khao a:hover{color:var(--safety-deep);text-decoration-color:var(--safety)}
+
+/* ---------- Footer ---------- */
+.site-footer{
+	margin-top:56px;
+	background:var(--steel-deep);
+	border-top:4px solid var(--safety);
+	color:#c9d6de;
+	padding:22px 0;
+	font-size:.92rem;
+}
+
+/* ---------- Responsive ---------- */
+@media(min-width:900px){
+	.wrap{padding:24px}
+}
+@media(max-width:620px){
+	.pc{grid-template-columns:1fr}
+	.review > header{padding:14px 16px}
+	.rv-body{padding:16px}
+}
